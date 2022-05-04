@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.1"
+ruby "3.1.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2.4"
@@ -46,14 +46,19 @@ gem "bootsnap", require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
-
+gem "devise"
+# gem "net-http"
+gem "omniauth-github", github: "omniauth/omniauth-github", branch: "master"
+gem "omniauth-rails_csrf_protection"
+gem "pundit"
 group :development do
+  gem "dotenv-rails"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
