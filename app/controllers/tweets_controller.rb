@@ -33,15 +33,20 @@ class TweetsController < ApplicationController
   # POST	/tweets/:id/reply
   def reply
     p "="*30
-    p params
+    p params[:id]
+    p tweet_params
+    replied_to = Tweet.find(params[:id])
     p "="*30
-    @replied_to = Tweet.find(params[:replied_to_id])
+    p replied_to
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
-    @tweet.replied_to = @replied_to
+    @tweet.replied_to = replied_to
 
+    p "="*30
+    p @tweet
+    p "="*30
     if @tweet.save
-      redirect_to @replied_to
+      redirect_to replied_to
     else
       render :new, status: :unprocessable_entity
     end
