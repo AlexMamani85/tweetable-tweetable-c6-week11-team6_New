@@ -1,0 +1,45 @@
+.card {
+  background-color: white;
+
+  padding: 1rem;
+}
+
+.criticsForm form {
+}
+
+form {
+}
+
+form input {
+  width: 100%;
+  border: none;
+  border: 2px solid var(--primary-400);
+  border-radius: 4px;
+  padding: 0.5rem;
+  outline: none;
+}
+
+form textarea {
+  width: 100%;
+  border-color: var(--primary-400);
+  border: none;
+  border: 2px solid var(--primary-400);
+  border-radius: 4px;
+  padding: 0.5rem;
+  outline: none;
+}
+
+form input[type="submit"] {
+  color: white;
+  background-color: var(--primary-400);
+}
+
+.criticContainer {
+  border-top: 2px solid #a8a8a8;
+  border-bottom: 2px solid #a8a8a8;
+  padding-block: 1rem;
+}
+
+.criticContainer span {
+  color: #b7b6b6;
+}

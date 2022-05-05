@@ -13,3 +13,101 @@
  *= require_tree .
  *= require_self
  */
+
+@import url("./global.css");
+@import url("./components/button.css");
+@import url("./components/input.css");
+@import url("./components/header.css");
+@import url("./components/footer.css");
+@import url("./style.css");
+
+* {
+  box-sizing: border-box;
+}
+a {
+  color: var(--primary-500);
+  text-decoration: none;
+}
+
+body {
+  background-color: #f9f1f1;
+}
+
+.debug {
+  border: 3px solid brown;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 1.5rem;
+}
+.mt-3 {
+  margin-top: 2rem;
+}
+.mt-4 {
+  margin-top: 2.5rem;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+.m3-2 {
+  margin-right: 1.5rem;
+}
+.m3-3 {
+  margin-right: 2rem;
+}
+.m3-4 {
+  margin-right: 2.5rem;
+}
+
+.mb- {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 1.5rem;
+}
+.mb-3 {
+  margin-bottom: 2rem;
+}
+.mb-4 {
+  margin-bottom: 2.5rem;
+}
+
+.ml-xs {
+  margin-left: 0.25rem;
+}
+.ml-1 {
+  margin-left: 1rem;
+}
+
+.ml-2 {
+  margin-left: 1.5rem;
+}
+.ml-3 {
+  margin-left: 2rem;
+}
+.ml-4 {
+  margin-left: 2.5rem;
+}
+
+.border-radius {
+  border-radius: 8px;
+}
+
+.border-radius4 {
+  border-radius: 4px;
+}
+
+.p-1 {
+  padding: 0.5rem;
+}

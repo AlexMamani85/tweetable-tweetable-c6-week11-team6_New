@@ -1,0 +1,11 @@
+<%= form_with model:tweet do |form| %>
+  <div class="field">
+    <%= form.text_field :body, placeholder: "Write something..." %>
+  </div>
+    <%= form.hidden_field :replied_to_id, value: replied_to.id %>
+
+
+  <div class="actions mt-1">
+    <%= form.submit 'Tweet' %>
+  </div>
+<% end %>

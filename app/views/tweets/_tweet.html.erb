@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="mainCard ">
+    <%= link_to tweet.user do %>
+      <%= image_tag tweet.user.avatar, class: "avatar" %>
+    <% end %> 
+    <strong><%= "#{tweet.user.name}" %></strong>
+    <%= link_to "#{tweet.user.username}", tweet.user, class: "link" %>
+    <p class="subtext text-gray300"><%= distance_of_time_in_words_to_now(tweet.created_at) %> ago</p>
+  </div>
+  <div class="infoCard ">
+    <div class="summaryContent ">
+      <p class="title"><%= tweet.body %></p>
+    </div>
+    <div class="actionsSection mt-2">
+      <div class="sectionButton">
+        <%= link_to tweet do %>
+          <%= image_tag "icons/reply.svg", class:"logo" %>
+        <% end %> 
+        <%= "#{tweet.replies.count}" %>
+        <% if tweet.likes.include?(current_user) %>
+          <%= link_to unlike_tweet_path(tweet) do %>
+            <%= image_tag "icons/like.svg", class:"logo" %>
+          <% end %> 
+        <% else %>    
+          <%= link_to like_tweet_path(tweet) do %>
+            <%= image_tag "icons/unlike.svg", class:"logo" %>
+          <% end %> 
+        <% end %>
+        <%= "#{tweet.likes.count}" %>
+        <% if tweet.user == current_user %>
+          <%= link_to edit_tweet_path(tweet) do %>
+            <%= image_tag "icons/edit.svg", class:"logo" %>
+          <% end %> 
+          <%= link_to tweet_path(tweet), data: { turbo_method: :delete } do %>
+            <%= image_tag "icons/destroy.svg", class:"logo" %>
+          <% end %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

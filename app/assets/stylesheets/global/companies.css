@@ -1,0 +1,58 @@
+.textBox {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.textContent {
+  height: 120px;
+  overflow: hidden;
+}
+
+.company .mainCard {
+  height: 300px;
+}
+
+.pd-1 {
+  padding: 1rem;
+}
+
+.companyCard {
+}
+
+.imageCard img {
+  border-radius: 4px;
+}
+
+.ellipsis {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  height: 100px;
+}
+
+.ellipsis > * {
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.subContent {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toggleTitle {
+  display: flex;
+  justify-content: center;
+}
+
+.activeTitle {
+  border-bottom: 4px solid var(--primary-500);
+}
+
+h4:first-of-type {
+  flex: 1 0 50%;
+}
+h4:nth-child(2) {
+  flex: 1 0 50%;
+}

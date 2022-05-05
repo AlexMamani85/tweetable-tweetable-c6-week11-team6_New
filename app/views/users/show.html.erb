@@ -1,0 +1,27 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading">User details</h1>
+    <div class="flex flex-column gap-4 content-lg">
+      <div>
+        <strong>Username:</strong>
+        <%= @user.username %>
+      </div>
+
+      <div>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </div>
+
+      <div>
+        <strong>Birth date:</strong>
+        <%= @user.name %>
+      </div>
+    
+      <div>
+        <%= link_to 'Edit', edit_user_registration_path %> |
+        <%= link_to 'Back', root_path %>
+      </div>
+    </div>
+  </div>
+</section>
+

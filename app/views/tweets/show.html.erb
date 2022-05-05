@@ -1,0 +1,12 @@
+<section class="section">
+  <div class="container">
+    <h1 class="heading">Tweet Detail</h1>
+    <%= render @tweet %>
+    <%= render 'reply', tweet:Tweet.new, replied_to: @tweet %>
+    <div class="table-container">
+      <% @tweet.replies.order(:created_at).reverse_order.each do |tweet| %>
+        <%= render tweet %>
+      <% end %>
+    </div>
+  </div>
+</section>

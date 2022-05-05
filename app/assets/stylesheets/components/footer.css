@@ -1,0 +1,17 @@
+footer {
+  background: var(--color-gray100);
+  padding-block: 1rem;
+}
+
+.developerSocial {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.developersContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 1rem;
+  flex-wrap: wrap;
+}

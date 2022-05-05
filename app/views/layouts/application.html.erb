@@ -11,6 +11,25 @@
   </head>
 
   <body>
+    <header class="header">
+      <div class="container navbar">
+        <%= link_to '{Tweetable}', root_path %>
+        <nav>
+          <ul>
+            <% if user_signed_in? %>
+              <li>Welcome <%= current_user.username %>!</li>
+              <li><%= link_to "Edit Profile", edit_user_registration_path, class: "link" %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "link" %></li>
+            <% else %>
+              <li><%= link_to "Sign in", new_user_session_path, class: "link" %></li>
+              <li><%= link_to "Sign up", new_user_registration_path, class: "link" %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
