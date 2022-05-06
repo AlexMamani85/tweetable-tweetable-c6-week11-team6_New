@@ -1,8 +1,8 @@
-<section class="section">
+<section class="section center">
   <div class="container">
     <h1 class="heading">Home</h1>
     <% if user_signed_in? %>
-      <%= render 'tweets/form', tweet: Tweet.new %>
+      <%= render 'form', tweet: Tweet.new %>
     <% end %>
     <div class="table-container">
       <% @tweets.order(:created_at).reverse_order.each do |tweet| %>

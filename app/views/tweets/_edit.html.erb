@@ -1,0 +1,9 @@
+<%= form_with model: Tweet.new, url: edit_tweet_path(tweet) do |form| %>
+  <div class="field mt-1">
+    <%= form.text_area :body, placeholder: tweet.body %>
+  </div>
+
+  <div class="actions mt-1">
+    <%= form.submit 'Update' %>
+  </div>
+<% end %>

@@ -1,10 +1,10 @@
 <div class="card">
   <div class="mainCard ">
-    <%= link_to tweet.user do %>
+    <%= link_to tweets_user_path(tweet.user) do %>
       <%= image_tag tweet.user.avatar, class: "avatar" %>
     <% end %> 
     <strong><%= "#{tweet.user.name}" %></strong>
-    <%= link_to "#{tweet.user.username}", tweet.user, class: "link" %>
+    <%= link_to "#{tweet.user.username}", tweets_user_path(tweet.user), class: "link" %>
     <p class="subtext text-gray300"><%= distance_of_time_in_words_to_now(tweet.created_at) %> ago</p>
   </div>
   <div class="infoCard ">
@@ -27,7 +27,7 @@
           <% end %> 
         <% end %>
         <%= "#{tweet.likes_count}" %>
-        <% if tweet.user == current_user %>
+        <% if (tweet.user == current_user) || current_user&.admin?  %>
           <%= link_to edit_tweet_path(tweet) do %>
             <%= image_tag "icons/edit.svg", class:"logo" %>
           <% end %> 

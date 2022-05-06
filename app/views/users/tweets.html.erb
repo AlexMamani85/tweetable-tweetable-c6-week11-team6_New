@@ -1,0 +1,17 @@
+<section class="section center">
+  <div class="container">
+    <%= render "header", user: @user %>
+    <div>
+      <%= link_to 'Tweets', tweets_user_path(@user), class: "current_link"%>
+    </div>
+    <div>
+      <%= link_to 'Likes', likes_user_path(@user) %>
+    </div>
+    <div class="table-container">
+      <% @tweets.order(:created_at).reverse_order.each do |tweet| %>
+        <%= render 'tweets/tweet', tweet:tweet %>
+      <% end %>
+    </div>
+  </div>
+</section>
+

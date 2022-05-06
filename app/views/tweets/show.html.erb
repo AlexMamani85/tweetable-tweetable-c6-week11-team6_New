@@ -1,10 +1,11 @@
-<section class="section">
+<section class="section center">
   <div class="container">
     <h1 class="heading">Tweet Detail</h1>
     <%= render @tweet %>
     <% if user_signed_in? %>
       <%= render 'reply', tweet: @tweet %>
     <% end %>
+    <hr>
     <div class="table-container">
       <% @tweet.replies.order(:created_at).reverse_order.each do |tweet| %>
         <%= render tweet %>

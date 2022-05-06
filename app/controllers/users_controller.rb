@@ -1,7 +1,16 @@
 class UsersController < ApplicationController
-
+  # GET /profile
   def show
+    @user = current_user
+  end
+  def likes
     @user = User.find(params[:id])
+    @tweets = @user.tweets
+  end
+  
+  def tweets
+    @user = User.find(params[:id])
+    @tweets = @user.tweets_created
   end
 
   # def edit

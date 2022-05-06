@@ -1,24 +1,24 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
-  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show like unlike tweets likes]
 
   protect_from_forgery with: :exception
 
   before_action :update_allowed_parameters, if: :devise_controller?
 
-  # def pundit_user
-  #   current_user
-  # end
+  def pundit_user
+    current_user
+  end
 
-  # private
+  private
 
-  # def user_not_authorized
-  #   flash[:alert] = "You are not authorized to perform this action."
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
 
-  #   redirect_to(request.referer || root_path)
-  # end
+    redirect_to(request.referer || root_path)
+  end
 
   protected
 
