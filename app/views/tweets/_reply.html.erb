@@ -1,9 +1,9 @@
 <%= form_with model: Tweet.new, url: reply_tweet_path(tweet) do |form| %>
-  <div class="field">
-    <%= form.text_field :body, placeholder: "Write something..." %>
+  <div class="field mt-1">
+    <%= form.text_area :body, placeholder: "Write something..." %>
   </div>
 
   <div class="actions mt-1">
-    <%= form.submit 'Tweet' %>
+    <%= form.submit 'Reply' %>
   </div>
 <% end %>

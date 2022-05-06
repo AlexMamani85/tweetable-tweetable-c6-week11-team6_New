@@ -1,0 +1,31 @@
+<h1 class="heading">User details</h1>
+<div class="flex flex-column gap-4 content-lg">
+
+  <div>
+    <h3><%= user.name %></h3>
+  </div>
+
+  <div class="select mt-1">
+    <%= image_tag user.avatar, style: 'height:auto; width:20%;',class:"avatar" %>
+  </div>
+
+  <div>
+    @<%= user.username %>
+  </div>
+
+  <div>
+    Joined on <%= user.created_at.strftime("%B %d, %Y") %>
+  </div>
+  
+  <% if user_signed_in? && current_user == user %>
+    <div>
+      <button class="button--lg"><%= link_to 'Edit profile', edit_user_registration_path %></button>
+    </div>
+  <% end %>
+
+  <div>
+    <%= link_to 'Back', root_path %>
+  </div>
+</div>
+
+

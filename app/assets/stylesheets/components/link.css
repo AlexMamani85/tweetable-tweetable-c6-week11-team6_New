@@ -1,0 +1,8 @@
+.current_link {
+  border-bottom: 4px solid var(--primary-500);
+}
+
+hr {
+  position: relative;
+  border: solid 2px var(--primary-500);
+}

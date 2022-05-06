@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 16 }
   validates :email, presence: true, uniqueness: true
-  validates :email, format: { with: VALID_EMAIL_REGEX }, allow_blank: true
+  validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :name, presence: true
 
   # Enums
@@ -30,6 +30,7 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.username = auth.info.nickname
       user.email = auth.info.email
+      user.name = auth.info.nickname
       user.password = Devise.friendly_token[0,20]
     end
   end
