@@ -18,8 +18,9 @@ class User < ApplicationRecord
   enum role: { member: 0, admin: 1 }
 
   # Association
-  has_and_belongs_to_many :likes, class_name: "Tweet", dependent: :destroy
-  has_many :tweets
+  has_many :likes, dependent: :destroy
+  has_many :tweets, through: :likes, dependent: :destroy
+  has_many :tweets_created, class_name: "Tweet"
   has_one_attached :avatar
 
 

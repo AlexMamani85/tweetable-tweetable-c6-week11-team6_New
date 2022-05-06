@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
 
   # GET	/tweets(.:format)
   def index 
-    @user = User.find(params[:user_id]) if params[:user_id]
+    # @user = User.find(params[:user_id]) if params[:user_id]
     @tweets = Tweet.all
   end
 
@@ -32,16 +32,13 @@ class TweetsController < ApplicationController
 
   # POST	/tweets/:id/reply
   def reply
-    p "="*30
-    p params
-    p "="*30
-    @replied_to = Tweet.find(params[:replied_to_id])
+    replied_to = Tweet.find(params[:id])
     @tweet = Tweet.new(tweet_params)
     @tweet.user = current_user
-    @tweet.replied_to = @replied_to
+    @tweet.replied_to = replied_to
 
     if @tweet.save
-      redirect_to @replied_to
+      redirect_to replied_to
     else
       render :new, status: :unprocessable_entity
     end
@@ -73,15 +70,15 @@ class TweetsController < ApplicationController
   # GET /tweets/:id/like
   def like
     @tweet = Tweet.find(params[:id])
-    @tweet.likes << current_user
-    redirect_to tweets_path
+    @tweet.users << current_user
+    redirect_to tweet_path
   end
 
   # GET /tweets/:id/unlike
   def unlike
     @tweet = Tweet.find(params[:id])
-    @tweet.likes.delete(current_user)
-    redirect_to tweets_path
+    @tweet.users.delete(current_user)
+    redirect_to tweet_path
   end
 
   private

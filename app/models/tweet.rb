@@ -1,12 +1,12 @@
 class Tweet < ApplicationRecord
   belongs_to :user
-  has_and_belongs_to_many :likes, class_name: "User", counter_cache: :true
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
   validates :body, presence: true, length: { maximum: 140 }
 
   # Associations
-  belongs_to :replied_to, class_name: "Tweet", optional: true
+  belongs_to :replied_to, class_name: "Tweet", optional: true, counter_cache: :replies_count
   has_many :replies, class_name: "Tweet",
-                        counter_cache: :true,
                         foreign_key: "replied_to_id",
                         dependent: :nullify,
                         inverse_of: "replied_to"

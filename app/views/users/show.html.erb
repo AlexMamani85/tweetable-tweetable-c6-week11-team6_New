@@ -13,12 +13,15 @@
       </div>
 
       <div>
-        <strong>Birth date:</strong>
+        <strong>Name:</strong>
         <%= @user.name %>
+      </div>
+
+      <div class="select mt-1">
+        <%= image_tag @user.avatar, style: 'height:auto; width:20%;',class:"avatar" %>
       </div>
     
       <div>
-        <%= link_to 'Edit', edit_user_registration_path %> |
         <%= link_to 'Back', root_path %>
       </div>
     </div>
