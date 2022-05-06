@@ -2,7 +2,9 @@
   <div class="container">
     <h1 class="heading">Tweet Detail</h1>
     <%= render @tweet %>
-    <%= render 'reply', tweet: @tweet %>
+    <% if user_signed_in? %>
+      <%= render 'reply', tweet: @tweet %>
+    <% end %>
     <div class="table-container">
       <% @tweet.replies.order(:created_at).reverse_order.each do |tweet| %>
         <%= render tweet %>

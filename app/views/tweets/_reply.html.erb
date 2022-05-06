@@ -1,4 +1,4 @@
-<%= form_with model:Tweet.new, url: reply_tweet_path(tweet) do |form| %>
+<%= form_with model: Tweet.new, url: reply_tweet_path(tweet) do |form| %>
   <div class="field">
     <%= form.text_field :body, placeholder: "Write something..." %>
   </div>

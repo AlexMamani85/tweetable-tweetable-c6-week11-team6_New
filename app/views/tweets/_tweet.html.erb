@@ -16,8 +16,8 @@
         <%= link_to tweet do %>
           <%= image_tag "icons/reply.svg", class:"logo" %>
         <% end %> 
-        <%= "#{tweet.replies.count}" %>
-        <% if tweet.likes.include?(current_user) %>
+        <%= "#{tweet.replies_count}" %>
+        <% if tweet.users.include?(current_user) %>
           <%= link_to unlike_tweet_path(tweet) do %>
             <%= image_tag "icons/like.svg", class:"logo" %>
           <% end %> 
@@ -26,7 +26,7 @@
             <%= image_tag "icons/unlike.svg", class:"logo" %>
           <% end %> 
         <% end %>
-        <%= "#{tweet.likes.count}" %>
+        <%= "#{tweet.likes_count}" %>
         <% if tweet.user == current_user %>
           <%= link_to edit_tweet_path(tweet) do %>
             <%= image_tag "icons/edit.svg", class:"logo" %>
