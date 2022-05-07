@@ -1,6 +1,6 @@
 <section class="section center">
   <div class="container">
-    <h1 class="heading">Home</h1>
+    <h1 class="heading center">Home</h1>
     <% if user_signed_in? %>
       <%= render 'form', tweet: Tweet.new %>
     <% end %>

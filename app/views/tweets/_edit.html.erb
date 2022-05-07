@@ -1,4 +1,4 @@
-<%= form_with model: Tweet.new, url: edit_tweet_path(tweet) do |form| %>
+<%= form_with model: Tweet.new, url: tweet_path(tweet), method: :put do |form| %>
   <div class="field mt-1">
     <%= form.text_area :body, placeholder: tweet.body %>
   </div>

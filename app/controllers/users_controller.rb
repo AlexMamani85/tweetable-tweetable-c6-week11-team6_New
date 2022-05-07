@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # GET /profile
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
   def likes
     @user = User.find(params[:id])
