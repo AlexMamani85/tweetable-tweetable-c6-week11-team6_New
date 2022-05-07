@@ -1,21 +1,58 @@
+require "faker"
+
+puts "Start seeding data"
+
+Like.destroy_all
 Tweet.destroy_all
 User.destroy_all
-system "rm -rf storage"
 
-user=User.create(email: 'user@test.com', username:'user', name:'user', password:'qwerty',password_confirmation:'qwerty')
-user02=User.create(email: 'user02@test.com', username:'user02', name:'user', password:'qwerty',password_confirmation:'qwerty')
-
-tweet1=Tweet.create(body:"first tweet from user",user:user)
-tweet2=Tweet.create(body:"second tweet from user02",user:user02)
-tweet3=Tweet.create(body:"third tweet from user",user:user)
-tweet4=Tweet.create(body:"fourth tweet from user02",user:user02)
-tweet5=Tweet.create(body:"fifth tweet from user",user:user)
-
-tweet6=Tweet.create(body:"(Response): sixth tweet",user:user02,replied_to_id:tweet1.id)
-tweet7=Tweet.create(body:"(Response): seventh tweet",user:user,replied_to_id:tweet2.id)
-tweet8=Tweet.create(body:"(Response): eighth tweet",user:user02,replied_to_id:tweet3.id)
-tweet9=Tweet.create(body:"(Response): nineth tweet",user:user,replied_to_id:tweet4.id)
-tweet10=Tweet.create(body:"(Response): tenth tweet",user:user02,replied_to_id:tweet5.id)
+puts "Start seeding users"
 
 
+10.times do |i|
+  avatar_url = Faker::LoremFlickr.image(size: "48x48", search_terms: ["logo"])
+  user = User.new(
+    email:Faker::Internet.unique.email(domain: "example"),
+    username:Faker::Twitter.unique.user[:screen_name],
+    name: Faker::Twitter.unique.user[:name],
+    password: "qwerty",
+    password_confirmation: "qwerty"
+  )
+  user.avatar.attach(io: URI.open(avatar_url), filename: "image#{i + 1}")
+  user.save
+end
+
+puts "Start seeding tweets"
+
+5.times do
+  tweet = Tweet.create(
+    body: Faker::Twitter.status[:text],
+    user: User.all.sample
+  )
+end
+
+45.times do
+  Tweet.create(
+    body: Faker::Twitter.status[:text],
+    user: User.all.sample,
+    replied_to: Tweet.all.sample
+  )
+end
+
+100.times do
+  Like.create(
+    tweet: Tweet.all.sample,
+    user: User.all.sample
+  )
+end
+
+user=User.create(email: 'admin@example.com', username:'admin', name:'adminnistrador', password:'qwerty',password_confirmation:'qwerty', role: 'admin')
+
+puts "Finished seeding"
+p "="*50
+p User.first.email
+p User.second.email
+p User.third.email
+p User.fourth.email
+p "="*50
 

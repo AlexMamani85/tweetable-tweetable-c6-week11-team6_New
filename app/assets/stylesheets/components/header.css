@@ -1,7 +1,12 @@
 .header {
   position: relative;
-  padding: 2rem;
-  background-color: white;
+  padding: 0 16px;
+  background-color: var(--gray-100);
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
 }
 
 .navbar {
@@ -10,6 +15,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  padding: 0;
 }
 
 .navbar__menu-icon,
