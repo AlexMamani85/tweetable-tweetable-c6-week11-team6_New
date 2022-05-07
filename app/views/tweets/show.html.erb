@@ -1,7 +1,9 @@
 <section class="section center">
   <div class="container">
-    <h1 class="heading">Tweet Detail</h1>
-    <%= render @tweet %>
+    <h1 class="heading center">Tweet Detail</h1>
+    <div class="table-container">
+      <%= render @tweet %>
+    </div>
     <% if user_signed_in? %>
       <%= render 'reply', tweet: @tweet %>
     <% end %>
