@@ -59,6 +59,8 @@ gem "devise"
 gem "omniauth-github", github: "omniauth/omniauth-github", branch: "master"
 gem "omniauth-rails_csrf_protection"
 gem "pundit"
+gem 'rspec-rails', '~> 5.0.0'
+
 group :development do
   gem "dotenv-rails"
   gem "rubocop", require: false
