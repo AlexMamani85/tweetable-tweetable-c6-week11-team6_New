@@ -32,5 +32,8 @@ Rails.application.routes.draw do
       # /user/:id/tweets
       get "tweets", on: :member
     end
+    post '/signup' => 'registrations#create'
+    post '/login' => 'sessions#create'
+    get '/logout' => 'sessions#destroy'
   end
 end
