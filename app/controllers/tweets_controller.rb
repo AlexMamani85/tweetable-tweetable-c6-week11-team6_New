@@ -40,7 +40,7 @@ class TweetsController < ApplicationController
   def reply
     replied_to = Tweet.find(params[:id])
     @tweet = Tweet.new(tweet_params)
-    authorize @tweet
+    authorize @tweet, :create?
     @tweet.user = current_user
     @tweet.replied_to = replied_to
 
