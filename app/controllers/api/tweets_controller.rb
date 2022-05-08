@@ -1,4 +1,6 @@
 class Api::TweetsController < ApiController
+  skip_before_action :authorize, only: %i[index show]
+
   # GET	/tweets(.:format)
   def index 
     if params[:user_id]
@@ -61,21 +63,28 @@ class Api::TweetsController < ApiController
   # PATCH/PUT	/tweets/:id(.:format)
   def update
     @tweet = Tweet.find(params[:id])
-    # authorize @tweet
-    if @tweet.update(tweet_params)
-      render json: @tweet
+    if (@tweet.user == current_user) || (user.admin?)
+      # authorize @tweet
+      if @tweet.update(tweet_params)
+        render json: @tweet
+      else
+        render json: @tweet.errors, status: :unprocessable_entity
+      end
     else
-      render json: @tweet.errors, status: :unprocessable_entity
+      respond_unauthorized('Access denied')    
     end
-
   end
 
   # DELETE	/tweets/:id(.:format)
   def destroy
     @tweet = Tweet.find(params[:id])
-    # authorize @tweet
-    @tweet.destroy
-    render json: {}, status: :see_other
+    if (@tweet.user == current_user) || (user.admin?)
+      # authorize @tweet
+      @tweet.destroy
+      render json: {}, status: :see_other
+    else
+      respond_unauthorized('Access denied')    
+    end
   end
 
   # GET /tweets/:id/like
