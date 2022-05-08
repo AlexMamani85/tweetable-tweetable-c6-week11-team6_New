@@ -19,14 +19,15 @@ class Api::TweetsController < ApiController
   # GET	/tweets/new(.:format)
   def new
     @tweet=Tweet.new
-    authorize @tweet
+    # authorize @tweet
     render json: @tweet
   end
 
   # POST	/tweets(.:format)
   def create
     @tweet = Tweet.new(tweet_params)
-    authorize @tweet
+
+    # authorize @tweet
     @tweet.user = current_user
 
     if @tweet.save
@@ -40,7 +41,7 @@ class Api::TweetsController < ApiController
   def reply
     replied_to = Tweet.find(params[:id])
     @tweet = Tweet.new(tweet_params)
-    authorize @tweet
+    # authorize @tweet
     @tweet.user = current_user
     @tweet.replied_to = replied_to
 
@@ -54,13 +55,13 @@ class Api::TweetsController < ApiController
   # GET	/tweets/:id/edit(.:format)
   def edit
     @tweet = Tweet.find(params[:id])
-    authorize @tweet
+    # authorize @tweet
   end
   
   # PATCH/PUT	/tweets/:id(.:format)
   def update
     @tweet = Tweet.find(params[:id])
-    authorize @tweet
+    # authorize @tweet
     if @tweet.update(tweet_params)
       render json: @tweet
     else
@@ -72,7 +73,7 @@ class Api::TweetsController < ApiController
   # DELETE	/tweets/:id(.:format)
   def destroy
     @tweet = Tweet.find(params[:id])
-    authorize @tweet
+    # authorize @tweet
     @tweet.destroy
     render json: {}, status: :see_other
   end
@@ -80,7 +81,7 @@ class Api::TweetsController < ApiController
   # GET /tweets/:id/like
   def like
     @tweet = Tweet.find(params[:id])
-    authorize @tweet, :create?
+    # authorize @tweet, :create?
     @tweet.users << current_user
     render json: @tweet
   end
@@ -88,7 +89,7 @@ class Api::TweetsController < ApiController
   # GET /tweets/:id/unlike
   def unlike
     @tweet = Tweet.find(params[:id])
-    authorize @tweet, :create?
+    # authorize @tweet, :create?
     @tweet.users.delete(current_user)
     render json: @tweet
   end

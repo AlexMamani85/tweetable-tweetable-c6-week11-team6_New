@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   before_create :check_avatar
+  # has_secure_password
+  has_secure_token
 
+  def invalidate_token
+    update(token: nil)
+  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
