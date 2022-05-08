@@ -63,7 +63,7 @@ class Api::TweetsController < ApiController
   # PATCH/PUT	/tweets/:id(.:format)
   def update
     @tweet = Tweet.find(params[:id])
-    if (@tweet.user == current_user) || (user.admin?)
+    if (@tweet.user == current_user) || (current_user.admin?)
       # authorize @tweet
       if @tweet.update(tweet_params)
         render json: @tweet
@@ -78,7 +78,7 @@ class Api::TweetsController < ApiController
   # DELETE	/tweets/:id(.:format)
   def destroy
     @tweet = Tweet.find(params[:id])
-    if (@tweet.user == current_user) || (user.admin?)
+    if (@tweet.user == current_user) || (current_user.admin?)
       # authorize @tweet
       @tweet.destroy
       render json: {}, status: :see_other
