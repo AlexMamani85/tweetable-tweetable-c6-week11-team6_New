@@ -1,11 +1,15 @@
 <div class="card">
   <div class="mainCard ">
-    <%= link_to tweets_user_path(tweet.user) do %>
-      <%= image_tag tweet.user.avatar, class: "avatar" %>
-    <% end %> 
-    <strong><%= "#{tweet.user.name}" %></strong>
-    <%= link_to "#{tweet.user.username}", tweets_user_path(tweet.user), class: "link" %>
-    <p class="subtext text-gray300"><%= distance_of_time_in_words_to_now(tweet.created_at) %> ago</p>
+    <div class="user-photo">
+      <%= link_to tweets_user_path(tweet.user) do %>
+        <%= image_tag tweet.user.avatar, class: "avatar" %>
+      <% end %> 
+    </div>
+    <div class="user-info">
+      <p class="tweet-name"><%= "#{tweet.user.name}" %></p>
+      <%= link_to "@#{tweet.user.username}", tweets_user_path(tweet.user), class: "link" %>
+      <p class="subtext text-gray300"><%= distance_of_time_in_words_to_now(tweet.created_at) %> ago</p>
+    </div>  
   </div>
   <div class="infoCard ">
     <div class="summaryContent ">

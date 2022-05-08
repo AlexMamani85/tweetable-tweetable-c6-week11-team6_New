@@ -53,6 +53,12 @@ body {
   line-height: 1.75rem;
 }
 
+.tweet-name {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+}
+
 .content-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
